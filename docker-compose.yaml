@@ -1,7 +1,12 @@
-version: "3.8"
 services:
   karate_demo:
     build: .
     container_name: karate_demo_c
     stdin_open: true
     tty: true
+    command: mvn test
+    environment:
+      - MAVEN_OPTS=-Djansi.force=true
+    volumes:
+      - .:/workspace/karate-demo
+    working_dir: /workspace/karate-demo
